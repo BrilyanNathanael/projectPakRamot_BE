@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.regis_page,
+.login_page {
+    background-color: #142850;
+    padding: 2em;
+    min-height: 100vh;
+}
+
+.regis_page .nav_account,
+.login_page .nav_account {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.regis_page .nav_account h5,
+.login_page .nav_account h5 {
+    color: #dae1e7;
+    margin-right: .5em;
+    margin-top: .2em;
+}
+
+.regis_page .nav_account a,
+.login_page .nav_account a {
+    color: #00909e;
+    font-size: 20px;
+}
+
+.regis_page .res {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em
+}
+
+.regis_page .res .register {
+    padding: 2em 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 3px solid #00909e;
+    box-shadow: 0px 0px 50px 10px #00919e73;
+    border-radius: 50px;
+    color: #dae1e7;
+}
+
+.register h1 {
+    margin: auto;
+    margin-bottom: .5em;
+}
+
+.register .garis {
+    background-color: #00909e;
+    width: 10em;
+    height: .2em;
+    margin: auto;
+}
+
+.register .regis_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.register .regis_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 2em;
+}
+
+.register form input {
+    background-color: #dae1e7;
+    border: 2px solid #00909e;
+    border-radius: 10px;
+}
+
+.register form input[type=text],
+.register form input[type=password] {
+    width: 35em;
+}
+
+.register .regis_row .regis_list .personal input[type=text],
+.register .regis_row .regis_list .personal input[type=date] {
+    width: 20em;
+}
+
+.register .regis_row .regis_list .personal .date_gender {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.register .regis_row .regis_list .personal .date_gender .form-group .date_birth {
+    display: flex;
+    flex-direction: column;
+}
+
+.register .regis_row .regis_list button {
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 2em auto 1em auto;
+    padding: .3em 1.5em;
+    font-size: 18px;
+    background-color: #142850;
+    border: 1px solid #00909e;
+}
+
+.register .regis_row .regis_list button:hover {
+    box-shadow: 0px 0px 40px 8px #00919e73;
+}
+
+.register form input[type=radio],
+.register .regis_row .regis_list .genders label {
+    cursor: pointer;
+}
+
+.register .regis_list .date_birth {
+    display: flex;
+    flex-direction: row;
+}
+
+.register .regis_row .regis_list .genders label {
+    margin-right: 1em;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #142850;
+}
+
+.login .login-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #dae1e7;
+}
+
+.login .login-list .remember_forgot_login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.login .login-list form input {
+    background-color: #dae1e7;
+}
+
+.login .login-list form .form-group .input input {
+    border-radius: 0px;
+    border: 3px solid #dae1e7;
+    height: 2em;
+    margin-left: 8px;
+    width: 20em;
+}
+
+.login .login-list form a {
+    color: #dae1e7;
+}
+
+.login .login-list .input {
+    display: flex;
+    flex-direction: row;
+    background-color: #00909e;
+    padding-left: 8px;
+}
+
+.login .login-list .input .icon_input {
+    display: flex;
+    align-items: center;
+}
+
+.login .login-list .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.login .login-list .remember_forgot_login .button_login {
+    display: flex;
+    align-items: center;
+}
+
+.login .login-list .remember_forgot_login .button_login button {
+    padding: .2em .8em .3em .8em;
+    border: 2px solid #00909e;
+    background-color: #142850;
+    border-radius: 10px;
+    color: #dae1e7;
+}
