@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('blogPage');
+    return view('/blogPage');
 });
 
 Auth::routes();
 
-Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+// Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout','Auth\LoginController@logout');
 
