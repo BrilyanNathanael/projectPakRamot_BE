@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Verify</title>
     <link rel="stylesheet" href="/css/verify.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 </head>
