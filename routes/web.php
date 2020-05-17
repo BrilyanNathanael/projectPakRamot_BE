@@ -22,4 +22,6 @@ Auth::routes();
 // Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout','Auth\LoginController@logout');
-
+Route::get('/articles', 'ArticlesController@index');
+Route::get('/create', 'ArticlesController@create');
+Route::post('/articles', 'ArticlesController@store');
