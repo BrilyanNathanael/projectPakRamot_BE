@@ -55,8 +55,7 @@
                             <button type="submit" class="btn btn-primary">
                                 {{ __('Send') }}
                             </button>          
-                        </div>
-                        
+                        </div>    
                 </form>
             </div>
         </div>
