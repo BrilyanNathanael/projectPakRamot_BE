@@ -18,7 +18,7 @@
             </div>
             <div class="menuLink">
                 <a href="/home" id="active">Home</a>
-                <a href="">My Articles</a>
+                <a href="/articles">My Articles</a>
                 <div class="lambang">
                     ||
                 </div>
