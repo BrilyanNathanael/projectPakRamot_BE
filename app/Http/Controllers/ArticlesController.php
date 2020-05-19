@@ -12,11 +12,13 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         $articles = Article::all();
-        return view('member.myArticle', ["articles" => $articles]);
+        return view('member.myArticle', compact('articles'));
     }
-/**
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +28,7 @@ class ArticlesController extends Controller
         return view('member.createArticleMember');
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,11 +39,69 @@ class ArticlesController extends Controller
         $request->validate([
             'title' => 'required',
             'username' => 'required',
-            'content' => 'required|min:300',
+            'content' =>'required'
         ]);
 
-        $articles = Article::create($request->all());
-        return redirect('/articles')->with('status','Data berhasil ditambahkan!');
+        Article::create($request->all());
+        return redirect('/articles');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Article $article)
+    {
+        return view('member.editArticleMember', compact('article'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Article $article)
+    {
+        $request->validate([
+            'title' => 'required',
+            'username' => 'required',
+            'content' =>'required'
+        ]);
+        Article::where('id', $article->id)
+                ->update([
+                    'title' => $request->title,
+                    'username' => $request->username,
+                    'content' => $request->content
+                ]);
+        return redirect('/articles');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $art = Article::findOrFail($id);
+        $art->delete();
+        return redirect('/articles');
+    }
+    
 }

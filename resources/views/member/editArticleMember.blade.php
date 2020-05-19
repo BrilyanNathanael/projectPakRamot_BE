@@ -10,7 +10,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link href="/css/createArticle.css" rel="stylesheet" type="text/css">
-    <title>Create New Article</title>
+    <title>Edit Article</title>
 </head>
 
 <body>
@@ -39,18 +39,19 @@
 
     <section class="article-maker">
         <a href="/create"><i class="fas fa-arrow-left"></i></a>
-        <span class="page-title">Create New Article</span>
+        <span class="page-title">Edit Article</span>
         <div class=article-workspace>
-            <form class="workspace" method="POST" action="/articles">
+            <form class="workspace" method="POST" action="/article/{{ $article->id }}">
+            @method('patch')    
             @csrf
                 <div class="form-group">
-                    <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}">
+                    <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $article->title }}">
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                    <input type="text" id="article-author" placeholder="Input writer name" name="username" class="form-control @error('username') is-invalid @enderror" value="{{old('username')}}">
+                    <input type="text" id="article-author" placeholder="Input writer name" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ $article->username }}">
                     @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -64,7 +65,7 @@
                     </div>
 
                     <textarea name="content" id="article-content" cols="100" rows="50"
-                        placeholder="Input content" class="form-control @error('content') is-invalid @enderror">{{old('content')}}</textarea>
+                        placeholder="Input content" class="form-control @error('content') is-invalid @enderror">{{ $article->content }}</textarea>
                     @error('content')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -72,7 +73,7 @@
                     @enderror
                     <br><br>
                     <button class="publish" type="submit">
-                        Publish
+                        Edit
                     </button>
                 </div>
             </form>

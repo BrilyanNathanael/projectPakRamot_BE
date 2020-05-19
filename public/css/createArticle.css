@@ -171,7 +171,7 @@ body {
     margin-bottom: 6rem;
 }
 
-.workspace {
+.form-group {
     padding: 0.1em 3em;
 }
 
@@ -225,9 +225,7 @@ select {
 
 #article-content {
     font-family: 'Roboto', sans-serif;
-    padding: 26.5em;
-    border: 1px solid black;
-    border-radius: 10px;
+    padding-top: 7rem;
 }
 
 .publish>a {

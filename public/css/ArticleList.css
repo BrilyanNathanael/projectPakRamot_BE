@@ -184,6 +184,24 @@ tr:nth-child(even) {
     background-color: white;
 }
 
+.container .article-list .article-data .tables td .list .list_action .form {
+    padding: 0;
+    margin: 0;
+}
+
+.container .article-list .article-data .tables:nth-child(even) td .list .list_action .form .delete {
+    background-color: white;
+    border: 0;
+}
+
+.container .article-list .article-data .tables td .list .list_action .form .delete {
+    cursor: pointer;
+    background-color: lightgray;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
 .article-list .article-data .tables td .nomor {
     display: flex;
     justify-content: center;
@@ -204,4 +222,9 @@ tr:nth-child(even) {
     width: 1.3em;
     margin-left: .3em;
     margin-right: .3em;
+}
+
+.article-list .article-data .tables .list .list_action {
+    display: flex;
+    flex-direction: row;
 }
