@@ -25,3 +25,6 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/create', 'ArticlesController@create');
 Route::post('/articles', 'ArticlesController@store');
+Route::delete('/article/{article}', ['as' => 'article.delete', 'uses' => 'ArticlesController@destroy']);
+Route::get('/article/{article}/edit', ['as' => 'article.edit', 'uses' => 'ArticlesController@edit']);
+Route::patch('/article/{article}',  'ArticlesController@update');

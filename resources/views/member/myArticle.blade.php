@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../fontawesome/css/all.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/ArticleList.css" rel="stylesheet" type="text/css">
     <title>Member Page</title>
@@ -58,30 +58,35 @@
                     <td>Title</td>
                     <td>Date Created</td>
                 </tr>
+                <?php $i=1; ?>
                 @foreach( $articles as $article )
-                <?php $i=1 ?>
                 <tr class="tables">
                     <td>
-                        <div class="nomor"><?php echo $i ?></div>
-                        <?php $i++?>
+                        <div class="nomor"><?php echo $i; ?></div>
+                        <?php $i++; ?>
                     </td>
                     <td>{{$article->title}}</td>
                     <td>
                         <div class="list">
                             09-04-2020
                             <div class="list_action">
-                                <a href="">
+                                <a href="{{ route('article.edit', $article->id)}}">
                                     <img src="/image/edit.png" alt="" class="edit" onmouseover="hoverEdit(this)"
                                         onmouseout="outHoverEdit(this)">
                                 </a>
-                                <a href="">
-                                    <img src="/image/delete.png" alt="" class="delete" onmouseover="hoverDelete(this)"
-                                        onmouseout="outHoverDelete(this)">
-                                </a>
+                                <form class="form" id="delete-form" action="{{ route('article.delete', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="delete" type="submit">
+                                        <img src="/image/delete.png" alt="" class="delete" onmouseover="hoverDelete(this)"
+                                            onmouseout="outHoverDelete(this)">
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </td>
                 </tr>
+                @endforeach
 
             </table>
             &nbsp;
