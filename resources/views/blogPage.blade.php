@@ -18,9 +18,9 @@
                 <h1>Ramot's</h1>
             </div>
             <div class="menuLink">
-                <a href="">Home</a>
-                <a href="" id="active">Article</a>
-                <a href="">Contact</a>
+                <a href="/">Home</a>
+                <a href="/" id="active">Article</a>
+                <a href="/">Contact</a>
                 <a href="{{route('login')}}" id="login">Login</a>
             </div>
         </nav>
@@ -43,17 +43,19 @@
                     <div id="slide-1">
                         <div class="page">
                             <div class="line"></div>
+                            @foreach( $dataArticle as $arts)
                             <div class="content">
                                 <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
+                                    <h1>{{$arts->title}}</h1>
+                                    <?php $content = substr($arts->content,0,60); ?>
+                                    <p>{{$content}} ...</p>
+                                    <h3 class="creator">{{$arts->username}}</h3>
                                     <h3 class="time">28 Jan 2020</h3>
                                 </div>
-                                <img src="image/1.jpg" alt="">
+                                <img src="{{ url('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
                             </div>
                             <div class="line"></div>
+                            @endforeach
                             <div class="content">
                                 <div class="text">
                                     <h1>Top 10 Programming Language in 2020</h1>

@@ -28,7 +28,7 @@
                         <i class="fas fa-chevron-up"></i>
                     </div>
                     <div class="profile" id="profile">
-                        <a href="">Edit Profile</a>
+                        <a href="/profile">Edit Profile</a>
                         <a href="{{url('/logout')}}">Logout</a>
                     </div>
                 </div>

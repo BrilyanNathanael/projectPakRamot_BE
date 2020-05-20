@@ -198,7 +198,7 @@ select {
     display: flex;
     float: right;
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
     margin: 30px 50px;
     margin-bottom: -8rem;
 }
