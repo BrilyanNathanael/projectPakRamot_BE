@@ -38,10 +38,10 @@
     </nav>
 
     <section class="article-maker">
-        <a href="/create"><i class="fas fa-arrow-left"></i></a>
+        <a href="/articles"><i class="fas fa-arrow-left"></i></a>
         <span class="page-title">Create New Article</span>
         <div class=article-workspace>
-            <form class="workspace" method="POST" action="/articles">
+            <form class="workspace" method="POST" action="/articles" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
                     <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}">
@@ -58,9 +58,12 @@
                     @enderror
                     <div class="addPicture">
                         <div class="addButton">
-                            <a href="">Add Picture <i class="far fa-plus-square"></i></a>
+                            <a href="#" id="addPicture">Add Picture <i class="far fa-plus-square"></i></a>
+                            <input type="file" name="picture" id="picture" style="display:none;">
                         </div>
-                        <img src="/image/picture.png" alt="">
+                        <div id="text">
+                            No file chosen, yet.
+                        </div>
                     </div>
 
                     <textarea name="content" id="article-content" cols="100" rows="50"
@@ -97,8 +100,10 @@
         <div class="footerLine"></div>
         <h3>© Copyright All Right reserved</h3>
     </section>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/dropdown.js"></script>
+
+    <script src="/js/file.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/dropdown.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.edit_page {
+    background-color: #142850;
+    padding: 3em;
+    min-height: 100vh;
+}
+
+.edit_page .nav_account {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.edit_page .nav_account h5 {
+    color: #dae1e7;
+    margin-right: .5em;
+    margin-top: .2em;
+}
+
+.edit_page .nav_account a {
+    color: #00909e;
+    font-size: 20px;
+}
+
+.edit_page .edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em
+}
+
+.edit_page .edit .profile {
+    padding: 2em 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 3px solid #00909e;
+    box-shadow: 0px 0px 50px 10px #00919e73;
+    border-radius: 50px;
+    color: #dae1e7;
+}
+
+.profile h1 {
+    margin: auto;
+    margin-bottom: .5em;
+}
+
+.profile .line {
+    background-color: #00909e;
+    width: 20em;
+    height: .2em;
+    margin: auto;
+}
+
+.profile .edit_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile .edit_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 2em;
+}
+
+.profile form input {
+    background-color: #dae1e7;
+    border: 2px solid #00909e;
+    border-radius: 10px;
+}
+
+.profile form input[type=text],
+.profile form input[type=password] {
+    width: 35em;
+}
+
+.profile .edit_row .edit_list .personal input[type=text],
+.profile .edit_row .edit_list .personal input[type=date] {
+    width: 20em;
+}
+
+.profile .edit_row .edit_list .personal .date_gender {
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.profile .edit_row .edit_list .personal .date_gender .form-group .date_birth {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .edit_row .edit_list button {
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 2em auto 1em auto;
+    padding: .3em 1.5em;
+    font-size: 18px;
+    background-color: #142850;
+    border: 1px solid #00909e;
+}
+
+.profile .edit_row .edit_list button:hover {
+    box-shadow: 0px 0px 40px 8px #00919e73;
+}
+
+.profile form input[type=radio],
+.profile .edit_row .edit_list .genders label {
+    cursor: pointer;
+}
+
+.profile .edit_list .date_birth {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile .edit_row .edit_list .genders label {
+    margin-right: 1em;
+}

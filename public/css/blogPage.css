@@ -194,6 +194,7 @@ body {
 .content {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin: 1em 8em;
     padding: 0.8em;
     border-radius: 5em;

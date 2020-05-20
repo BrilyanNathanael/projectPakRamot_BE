@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link href="/css/createArticle.css" rel="stylesheet" type="text/css">
+    <link href="/css/editArticle.css" rel="stylesheet" type="text/css">
     <title>Edit Article</title>
 </head>
 
@@ -38,10 +38,10 @@
     </nav>
 
     <section class="article-maker">
-        <a href="/create"><i class="fas fa-arrow-left"></i></a>
+        <a href="/articles"><i class="fas fa-arrow-left"></i></a>
         <span class="page-title">Edit Article</span>
         <div class=article-workspace>
-            <form class="workspace" method="POST" action="/article/{{ $article->id }}">
+            <form class="workspace" method="POST" action="/article/{{ $article->id }}" enctype="multipart/form-data">
             @method('patch')    
             @csrf
                 <div class="form-group">
@@ -59,11 +59,15 @@
                     @enderror
                     <div class="addPicture">
                         <div class="addButton">
-                            <a href="">Add Picture <i class="far fa-plus-square"></i></a>
+                            <a href="#" id="addPicture">Edit Picture <i class="far fa-plus-square"></i></a>
+                            <input type="file" name="picture" id="picture" style="display:none;">
+                            <div id="text">
+                                No file chosen, yet.
+                            </div>
                         </div>
-                        <img src="/image/picture.png" alt="">
-                    </div>
+                        <img src="{{ url('/data_file/' . $article->picture) }}" alt="" width="80px" height="80px">
 
+                    </div>
                     <textarea name="content" id="article-content" cols="100" rows="50"
                         placeholder="Input content" class="form-control @error('content') is-invalid @enderror">{{ $article->content }}</textarea>
                     @error('content')
@@ -98,8 +102,9 @@
         <div class="footerLine"></div>
         <h3>© Copyright All Right reserved</h3>
     </section>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/dropdown.js"></script>
+    <script src="/js/file.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/dropdown.js"></script>
 </body>
 
 </html>

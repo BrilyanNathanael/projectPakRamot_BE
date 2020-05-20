@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/blogPage');
+    $dataArticle = Article::all();
+    if(auth()->user()){
+        return redirect('/home');
+    }
+    return view('/blogPage',compact('dataArticle'));
 });
 
 Auth::routes();
 
-// Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout','Auth\LoginController@logout');
+Route::get('/profile', 'ProfileController@edit');
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/create', 'ArticlesController@create');
 Route::post('/articles', 'ArticlesController@store');

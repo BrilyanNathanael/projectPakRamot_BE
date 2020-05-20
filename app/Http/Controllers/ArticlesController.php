@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use File;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -39,10 +40,21 @@ class ArticlesController extends Controller
         $request->validate([
             'title' => 'required',
             'username' => 'required',
-            'content' =>'required'
+            'content' =>'required',
+            'picture' => 'required'
         ]);
+        
+        $file = $request->file('picture');
+        $filename = time() . "_" . $file->getClientOriginalName();
+        $destination = 'data_file';
+        $file->move($destination, $filename);
 
-        Article::create($request->all());
+        Article::create([
+            'title' => $request->title,
+            'username' => $request->username,
+            'content' => $request->content,
+            'picture' => $filename
+            ]);
         return redirect('/articles');
     }
 
@@ -80,14 +92,37 @@ class ArticlesController extends Controller
         $request->validate([
             'title' => 'required',
             'username' => 'required',
-            'content' =>'required'
+            'content' => 'required',
         ]);
-        Article::where('id', $article->id)
+        
+        if($request->hasFile('picture'))
+        {
+            $article = Article::where('id',$article->id)->first();
+            File::delete('data_file/' . $article->picture);
+
+            $file = $request->file('picture');
+            $filename = time() . "_" . $file->getClientOriginalName();
+            $destination = 'data_file';
+            $file->move($destination, $filename);
+
+            Article::where('id', $article->id)
+                ->update([
+                    'title' => $request->title,
+                    'username' => $request->username,
+                    'content' => $request->content,
+                    'picture' => $filename
+            ]);
+        }
+        
+        else
+        {
+            Article::where('id', $article->id)
                 ->update([
                     'title' => $request->title,
                     'username' => $request->username,
                     'content' => $request->content
-                ]);
+            ]);
+        }
         return redirect('/articles');
     }
 
@@ -99,8 +134,10 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        $art = Article::findOrFail($id);
-        $art->delete();
+        $article = Article::where('id',$id)->first();
+        File::delete('data_file/' . $article->picture);
+        
+        Article::where('id',$id)->delete();
         return redirect('/articles');
     }
     
