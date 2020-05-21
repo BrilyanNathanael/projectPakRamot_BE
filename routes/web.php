@@ -14,7 +14,7 @@ use App\Article;
 */
 
 Route::get('/', function () {
-    $dataArticle = Article::all();
+    $dataArticle = Article::latest()->paginate(3);
     if(auth()->user()){
         return redirect('/home');
     }
@@ -26,9 +26,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout','Auth\LoginController@logout');
 Route::get('/profile', 'ProfileController@edit');
+Route::patch('/profile/{profile}' , 'ProfileController@update');
 Route::get('/articles', 'ArticlesController@index');
 Route::get('/create', 'ArticlesController@create');
 Route::post('/articles', 'ArticlesController@store');
+Route::get('/articles/{article}', 'ArticlesController@show');
 Route::delete('/article/{article}', ['as' => 'article.delete', 'uses' => 'ArticlesController@destroy']);
 Route::get('/article/{article}/edit', ['as' => 'article.edit', 'uses' => 'ArticlesController@edit']);
 Route::patch('/article/{article}',  'ArticlesController@update');

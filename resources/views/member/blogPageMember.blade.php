@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Article_Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="css/blogPageMember.css">
 </head>
@@ -43,142 +45,26 @@
                     <div id="slide-1">
                         <div class="page">
                             <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
+                            @foreach( $article as $arts)
+                            <a href="/articles/{{$arts->id}}">
+                                <div class="content">
+                                    <div class="text">
+                                        <h1>{{$arts->title}}</h1>
+                                        <?php $content = substr($arts->content,0,100); ?>
+                                        <p>{{$content}} ...</p>
+                                        <h3 class="creator">{{$arts->username}}</h3>
+                                        <h3 class="time">{{$arts->created_at->format('d M Y')}}</h3>
+                                    </div>
+                                    <img src="{{ url('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
                                 </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
+                            </a>
                             <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
+                            @endforeach
+                            @if($article->hasPages())
+                                <div class="pagination">
+                                    {{ $article->onEachSide(1)->links() }}
                                 </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="buttonSlide">
-                                <a href="#slide-3" id="slide-1"><i class="fas fa-angle-double-left"></i></a>
-                                <div class="current">
-                                    <a href="#slide-1" id="curr">1</a>
-                                    <a href="#slide-2">2</a>
-                                    <a href="#slide-3">3</a>
-                                </div>
-                                <a href="#slide-2" id="slide-1"><i class="fas fa-angle-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="slide-2">
-                        <div class="page">
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="buttonSlide">
-                                <a href="#slide-1" id="slide-2"><i class="fas fa-angle-double-left"></i></a>
-                                <div class="current">
-                                    <a href="#slide-1">1</a>
-                                    <a href="#slide-2" id="curr">2</a>
-                                    <a href="#slide-3">3</a>
-                                </div>
-                                <a href="#slide-3" id="slide-2"><i class="fas fa-angle-double-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="slide-3">
-                        <div class="page">
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="text">
-                                    <h1>Top 10 Programming Language in 2020</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam hic quasi,
-                                        quidem reprehenderit ...</p>
-                                    <h3 class="creator">Severian Fathich W.</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
-                                </div>
-                                <img src="image/1.jpg" alt="">
-                            </div>
-                            <div class="line"></div>
-                            <div class="buttonSlide">
-                                <a href="#slide-2" id="slide-3"><i class="fas fa-angle-double-left"></i></a>
-                                <div class="current">
-                                    <a href="#slide-1">1</a>
-                                    <a href="#slide-2">2</a>
-                                    <a href="#slide-3" id="curr">3</a>
-                                </div>
-                                <a href="#slide-1" id="slide-3"><i class="fas fa-angle-double-right"></i></a>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

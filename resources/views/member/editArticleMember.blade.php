@@ -30,8 +30,8 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="profile" id="profile">
-                    <a href="/Member/editProfile.html">Edit Profile</a>
-                    <a href="/blogPage.html">Logout</a>
+                    <a href="/profile">Edit Profile</a>
+                    <a href="{{url('/logout')}}">Logout</a>
                 </div>
             </div>
         </div>
@@ -47,12 +47,6 @@
                 <div class="form-group">
                     <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $article->title }}">
                     @error('title')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                    <input type="text" id="article-author" placeholder="Input writer name" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ $article->username }}">
-                    @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

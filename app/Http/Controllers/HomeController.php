@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Article;
 
 class HomeController extends Controller
 {
@@ -25,15 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $article = Article::latest()->paginate(3);
         $user = Auth::user();
         $userRole = $user->role;
         if($userRole == "admin"){
             $data = User::all();
-            return view('admin/blogPageAdmin',compact('data'));
+            return view('admin/blogPageAdmin',['data' => $data, 'article' => $article]);
         }
         else{
             $data = User::find($user->id);
-            return view('member/blogPageMember',compact('data'));
+            return view('member/blogPageMember',['data' => $data, 'article' => $article]);
         }
     }
 }
