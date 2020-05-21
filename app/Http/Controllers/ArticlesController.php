@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
+use Auth;
 use File;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,9 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('member.myArticle', compact('articles'));
+        $user = Auth::user();
+        $data = User::find($user->id);
+        return view('member.myArticle', ['articles' => $articles , 'data' => $data]);
     }
 
     /**
@@ -26,7 +30,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('member.createArticleMember');
+        $user = Auth::user();
+        $data = User::find($user->id);
+        return view('member.createArticleMember',compact('data'));
     }
 
     /**
@@ -39,7 +45,6 @@ class ArticlesController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'username' => 'required',
             'content' =>'required',
             'picture' => 'required'
         ]);
@@ -51,7 +56,7 @@ class ArticlesController extends Controller
 
         Article::create([
             'title' => $request->title,
-            'username' => $request->username,
+            'username' => auth()->user()->username,
             'content' => $request->content,
             'picture' => $filename
             ]);
@@ -66,7 +71,10 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        $data = User::find($user->id);
+        $artics= Article::find($id);
+        return view('viewArticle', ['data' => $data, 'artics' => $artics]);
     }
 
     /**
@@ -91,8 +99,7 @@ class ArticlesController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'username' => 'required',
-            'content' => 'required',
+            'content' => 'required'
         ]);
         
         if($request->hasFile('picture'))
@@ -108,7 +115,6 @@ class ArticlesController extends Controller
             Article::where('id', $article->id)
                 ->update([
                     'title' => $request->title,
-                    'username' => $request->username,
                     'content' => $request->content,
                     'picture' => $filename
             ]);
@@ -119,7 +125,6 @@ class ArticlesController extends Controller
             Article::where('id', $article->id)
                 ->update([
                     'title' => $request->title,
-                    'username' => $request->username,
                     'content' => $request->content
             ]);
         }

@@ -23,11 +23,11 @@
                 </div>
                 <div class="dropdown">
                     <div class="drop" onclick="clickDropDown(this)">
-                        <a href="#" id="user">Welcome, <span class="user"> Member!</span></a>
+                        <a href="#" id="user">Welcome, <span class="user"> {{$data->username}}</span></a>
                         <i class="fas fa-chevron-up"></i>
                     </div>
                     <div class="profile" id="profile">
-                        <a href="">Edit Profile</a>
+                        <a href="/profile">Edit Profile</a>
                         <a href="{{url('/logout')}}">Logout</a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <td>{{$article->title}}</td>
                     <td>
                         <div class="list">
-                            09-04-2020
+                            {{$article->created_at->format('D, d M Y')}}
                             <div class="list_action">
                                 <a href="{{ route('article.edit', $article->id)}}">
                                     <img src="/image/edit.png" alt="" class="edit" onmouseover="hoverEdit(this)"

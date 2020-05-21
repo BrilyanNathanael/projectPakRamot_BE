@@ -184,6 +184,11 @@ body {
     flex-direction: column;
 }
 
+.page .pagination {
+    display: flex;
+    justify-content: center;
+}
+
 .page .line {
     width: 65%;
     margin: 1em 15em;

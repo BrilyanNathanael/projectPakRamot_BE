@@ -50,12 +50,6 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <input type="text" id="article-author" placeholder="Input writer name" name="username" class="form-control @error('username') is-invalid @enderror" value="{{old('username')}}">
-                    @error('username')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
                     <div class="addPicture">
                         <div class="addButton">
                             <a href="#" id="addPicture">Add Picture <i class="far fa-plus-square"></i></a>

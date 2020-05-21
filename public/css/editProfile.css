@@ -11,6 +11,13 @@
     min-height: 100vh;
 }
 
+.edit_page>a {
+    font-size: 3em;
+    padding-left: 1em;
+    padding-bottom: -5em;
+    color: #dae1e7;
+}
+
 .edit_page .nav_account {
     display: flex;
     justify-content: flex-end;
