@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: medium;
+    background-color: #142850;
+    color: #dae1e7;
+}
+
+.menuBar {
+    width: 100%;
+    padding: 1.5em;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: fixed;
+    align-items: center;
+    border-bottom: 3px solid #dae1e7;
+    background-color: #142850;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 1.5em;
+    margin-left: 1em;
+}
+
+.menuLink {
+    display: flex;
+    flex-direction: row;
+}
+
+.menuLink a {
+    margin: .5em 1.2em;
+    padding: .5em;
+    text-decoration: none;
+    color: #dae1e7;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+.menuLink .lambang {
+    display: flex;
+    align-items: center;
+    color: #27496d;
+    font-size: larger;
+}
+
+.menuLink a:hover {
+    border-bottom: 4px solid #00909e;
+    padding-bottom: 0;
+}
+
+#active {
+    border-bottom: 4px solid #00909e;
+    padding-bottom: 0;
+}
+
+.container {
+    padding: 7em 3em;
+}
+
+.user {
+    color: #00909e;
+}
+
+.menuLink .dropdown {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menuLink .dropdown .drop {
+    display: flex;
+    align-items: center;
+}
+
+.menuLink .dropdown .drop a {
+    margin: .5em .2em;
+}
+
+.menuLink .dropdown .drop a:hover {
+    border: 0;
+    padding: .5em;
+}
+
+.menuLink .dropdown .profile {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    min-width: 11em;
+    right: 25px;
+    top: 58px;
+    z-index: 1;
+    box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menuLink .dropdown .profile a {
+    color: #142850;
+    padding: 1em;
+    margin: 0;
+}
+
+.menuLink .dropdown .profile a:hover {
+    border: 0;
+    color: #00909e;
+}
+
+.container {
+    padding: 7em 3em;
+}
+
+.user {
+    color: #00909e;
+}
+
+.menuLink #user:hover {
+    cursor: default;
+    border: none;
+}
+
+.member-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.list-title {
+    margin-left: 8%;
+    font-size: larger;
+}
+
+.member-data {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #00909e;
+    color: #dae1e7;
+}
+
+.table-header {
+    background-color: #00909e;
+    color: #dae1e7;
+}
+
+table,
+tr,
+td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+tr {
+    background-color: lightgray;
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+.member-list .member-data .tables td .nomor {
+    display: flex;
+    justify-content: center;
+}
+
+.member-list .member-data .tables .list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.member-list .member-data .tables .list a {
+    text-decoration: none;
+}
+
+.member-list .member-data .tables .list img {
+    width: 1.3em;
+    margin-left: .3em;
+    margin-right: .3em;
+}

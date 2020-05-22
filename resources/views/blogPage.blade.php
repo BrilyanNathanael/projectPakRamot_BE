@@ -46,16 +46,18 @@
                         <div class="page">
                             <div class="line"></div>
                             @foreach( $dataArticle as $arts)
-                            <div class="content">
-                                <div class="text">
-                                    <h1>{{$arts->title}}</h1>
-                                    <?php $content = substr($arts->content,0,60); ?>
-                                    <p>{{$content}} ...</p>
-                                    <h3 class="creator">{{$arts->username}}</h3>
-                                    <h3 class="time">28 Jan 2020</h3>
+                            <a href="/articlesGuest/{{$arts->id}}">
+                                <div class="content">
+                                    <div class="text">
+                                        <h1>{{$arts->title}}</h1>
+                                        <?php $content = substr($arts->content,0,60); ?>
+                                        <p>{{$content}} ...</p>
+                                        <h3 class="creator">{{$arts->username}}</h3>
+                                        <h3 class="time">28 Jan 2020</h3>
+                                    </div>
+                                    <img src="{{ url('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
                                 </div>
-                                <img src="{{ url('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
-                            </div>
+                            </a>
                             <div class="line"></div>
                             @endforeach
                             <div class="pagination">

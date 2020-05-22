@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link href="/css/createArticle.css" rel="stylesheet" type="text/css">
-    <title>Create New Article</title>
+    <link href="/css/editArticle.css" rel="stylesheet" type="text/css">
+    <title>Edit Article</title>
 </head>
 
 <body>
@@ -19,8 +19,9 @@
             <h1>Ramot's</h1>
         </div>
         <div class="menuLink">
-            <a href="/home">Home</a>
-            <a href="/articles" id="active">My Articles</a>
+            <a href="/">Home</a>
+            <a href="/articles" id="active">Articles</a>
+            <a href="/memberList">Member List</a>
             <div class="lambang">
                 ||
             </div>
@@ -30,8 +31,8 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="profile" id="profile">
-                    <a href="/Member/editProfile.html">Edit Profile</a>
-                    <a href="/blogPage.html">Logout</a>
+                    <a href="/profile">Edit Profile</a>
+                    <a href="{{url('/logout')}}">Logout</a>
                 </div>
             </div>
         </div>
@@ -39,12 +40,13 @@
 
     <section class="article-maker">
         <a href="/"><i class="fas fa-arrow-left"></i></a>
-        <span class="page-title">Create New Article</span>
+        <span class="page-title">Edit Article</span>
         <div class=article-workspace>
-            <form class="workspace" method="POST" action="/articles" enctype="multipart/form-data">
+            <form class="workspace" method="POST" action="/article/{{ $article->id }}" enctype="multipart/form-data">
+            @method('patch')    
             @csrf
                 <div class="form-group">
-                    <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}">
+                    <input type="text" id="article-title" placeholder="Input title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $article->title }}">
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -52,16 +54,17 @@
                     @enderror
                     <div class="addPicture">
                         <div class="addButton">
-                            <a href="#" id="addPicture">Add Picture <i class="far fa-plus-square"></i></a>
+                            <a href="#" id="addPicture">Edit Picture <i class="far fa-plus-square"></i></a>
                             <input type="file" name="picture" id="picture" style="display:none;">
+                            <div id="text">
+                                No file chosen, yet.
+                            </div>
                         </div>
-                        <div id="text">
-                            No file chosen, yet.
-                        </div>
-                    </div>
+                        <img src="{{ url('/data_file/' . $article->picture) }}" alt="" width="80px" height="80px">
 
+                    </div>
                     <textarea name="content" id="article-content" cols="100" rows="50"
-                        placeholder="Input content" class="form-control @error('content') is-invalid @enderror">{{old('content')}}</textarea>
+                        placeholder="Input content" class="form-control @error('content') is-invalid @enderror">{{ $article->content }}</textarea>
                     @error('content')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -69,7 +72,7 @@
                     @enderror
                     <br><br>
                     <button class="publish" type="submit">
-                        Publish
+                        Edit
                     </button>
                 </div>
             </form>
@@ -94,7 +97,6 @@
         <div class="footerLine"></div>
         <h3>© Copyright All Right reserved</h3>
     </section>
-
     <script src="/js/file.js"></script>
     <script src="/js/navbar.js"></script>
     <script src="/js/dropdown.js"></script>

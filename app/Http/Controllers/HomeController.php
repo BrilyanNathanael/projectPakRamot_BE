@@ -31,7 +31,8 @@ class HomeController extends Controller
         $userRole = $user->role;
         if($userRole == "admin"){
             $data = User::all();
-            return view('admin/blogPageAdmin',['data' => $data, 'article' => $article]);
+            $account = User::find($user->id);
+            return view('admin/blogPageAdmin',['account' => $account, 'data' => $data, 'article' => $article]);
         }
         else{
             $data = User::find($user->id);

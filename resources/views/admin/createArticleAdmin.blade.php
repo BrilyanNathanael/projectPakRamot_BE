@@ -19,8 +19,9 @@
             <h1>Ramot's</h1>
         </div>
         <div class="menuLink">
-            <a href="/home">Home</a>
-            <a href="/articles" id="active">My Articles</a>
+            <a href="/">Home</a>
+            <a href="/articles" id="active">Articles</a>
+            <a href="/memberList">Member List</a>
             <div class="lambang">
                 ||
             </div>

@@ -38,7 +38,7 @@
     </nav>
 
     <section class="article-maker">
-        <a href="/articles"><i class="fas fa-arrow-left"></i></a>
+        <a href="/"><i class="fas fa-arrow-left"></i></a>
         <span class="page-title">Edit Article</span>
         <div class=article-workspace>
             <form class="workspace" method="POST" action="/article/{{ $article->id }}" enctype="multipart/form-data">
