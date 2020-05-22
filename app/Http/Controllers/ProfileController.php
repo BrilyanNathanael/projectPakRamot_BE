@@ -11,9 +11,18 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        $user = Auth::user();
-        $profile = User::find($user->id);
-        return view('profile', compact('profile'));
+        if(Auth::user()->role === "member")
+        {
+            $user = Auth::user();
+            $profile = User::find($user->id);
+            return view('profile', compact('profile'));
+        }
+        else if(Auth::user()->role === "admin")
+        {
+            $user = Auth::user();
+            $profile = User::find($user->id);
+            return view('profileAdmin', compact('profile'));
+        }
     }
 
     public function update(Request $request, User $user)
@@ -78,11 +87,11 @@ class ProfileController extends Controller
                 $user->password = bcrypt($request->password);
             }
             
-            return redirect('/articles');
+            return redirect('/');
         }
         else 
         {
-            return redirect()->back();
+            return redirect('/');
         }
     }
 }

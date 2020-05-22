@@ -17,10 +17,23 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        $user = Auth::user();
-        $data = User::find($user->id);
-        return view('member.myArticle', ['articles' => $articles , 'data' => $data]);
+        if(Auth::user()->role === "member")
+        {
+            
+            $user = Auth::user();
+            $data = User::find($user->id);
+            $articles = Article::where('username', $user->username)->get();
+            return view('member.myArticle', ['articles' => $articles , 'data' => $data]);    
+        }
+        else if(Auth::user()->role === "admin")
+        {
+            $user = Auth::user();
+            $data = User::find($user->id);
+            $articles = Article::where('username', $user->username)->get();
+            return view('admin.articlesAdmin', ['articles' => $articles , 'data' => $data]);    
+        
+        }
+    
     }
 
     /**
@@ -30,9 +43,22 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $data = User::find($user->id);
-        return view('member.createArticleMember',compact('data'));
+        if(Auth::user()->role === "member")
+        {
+            $user = Auth::user();
+            $data = User::find($user->id);
+            return view('member.createArticleMember',compact('data'));
+        }
+        else if(Auth::user()->role === "admin")
+        {
+            $user = Auth::user();
+            $data = User::find($user->id);
+            return view('admin.createArticleAdmin',compact('data'));
+        }
+        else 
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,10 +97,28 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $data = User::find($user->id);
-        $artics= Article::find($id);
-        return view('viewArticle', ['data' => $data, 'artics' => $artics]);
+        if(Auth::user()->role === "member")
+        {
+            $user = Auth::user();
+            $data = User::find($user->id);
+            $artics= Article::find($id);
+            return view('viewArticle', ['data' => $data, 'artics' => $artics]);
+        }
+        else if(Auth::user()->role === "admin")
+        {
+            $user = Auth::user();
+            $data = User::find($user->id);
+            $artics= Article::find($id);
+            return view('viewArticleAdmin', ['data' => $data, 'artics' => $artics]);        
+        }
+        
+
+    }
+
+    public function showGuest($id)
+    {
+        $artics = Article::find($id);
+        return view('viewArticleGuest',compact('artics'));
     }
 
     /**
@@ -85,7 +129,18 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('member.editArticleMember', compact('article'));
+        if(Auth::user()->role === "member")
+        {
+            return view('member.editArticleMember', compact('article'));
+        }
+        else if(Auth::user()->role === "admin")
+        {
+            return view('admin.editArticleAdmin', compact('article'));
+        }
+        else
+        {
+            return redirect()->back();
+        }
     }
 
     /**
