@@ -52,17 +52,31 @@
                         <?php $i++; ?>
                     </td>
                     <td>{{$user->username}}</td>
+                    @if($user->blocked_at == null)
+                    <td>
+                        <div class="list">
+                            Normal
+                            <div class="list_action">
+                                <a href="/memberList/{{$user->id}}">
+                                    <img src="/image/padlock-unban.png" alt="" class="edit" onmouseover="hoverBan(this)"
+                                        onmouseout="outHoverUnban(this)">
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    @else
                     <td>
                         <div class="list">
                             Banned
                             <div class="list_action">
-                                <a href="">
+                                <a href="/memberList/{{$user->id}}">
                                     <img src="/image/padlock-ban.png" alt="" class="edit" onmouseover="hoverUnban(this)"
                                         onmouseout="outHoverUnban(this)">
                                 </a>
                             </div>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
 

@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use File;
 use Illuminate\Http\Request;
+use App\Rules\ValidContent;
 
 class ArticlesController extends Controller
 {
@@ -19,7 +20,6 @@ class ArticlesController extends Controller
     {
         if(Auth::user()->role === "member")
         {
-            
             $user = Auth::user();
             $data = User::find($user->id);
             $articles = Article::where('username', $user->username)->get();
@@ -29,8 +29,9 @@ class ArticlesController extends Controller
         {
             $user = Auth::user();
             $data = User::find($user->id);
-            $articles = Article::where('username', $user->username)->get();
-            return view('admin.articlesAdmin', ['articles' => $articles , 'data' => $data]);    
+            $role = User::all();
+            $articles = Article::all();
+            return view('admin.articlesAdmin', ['articles' => $articles, 'role' => $role, 'data' => $data]);    
         
         }
     
@@ -71,8 +72,8 @@ class ArticlesController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' =>'required',
-            'picture' => 'required'
+            'content' => ['required', new ValidContent],
+            'picture' => 'required',
         ]);
         
         $file = $request->file('picture');
@@ -154,7 +155,7 @@ class ArticlesController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required'
+            'content' => ['required', new ValidContent],
         ]);
         
         if($request->hasFile('picture'))

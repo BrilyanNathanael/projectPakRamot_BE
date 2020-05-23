@@ -22,11 +22,15 @@
     <div class="login">
         <img src="/image/Untitled-1.png" alt="" width="400px">
             <div class="login-list">
-                @if ($errors->any())
+
+                @if (session('error'))
                     <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                    <!-- <div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert">×</button> 
                         <strong>Incorrect username or password</strong>
-                    </div>
+                    </div> -->
                 @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
