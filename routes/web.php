@@ -23,10 +23,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/articlesGuest/{article}', 'ArticlesController@showGuest');
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth','active_user']], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/logout','Auth\LoginController@logout');
     Route::get('/profile', 'ProfileController@edit');
     Route::patch('/profile/{profile}' , 'ProfileController@update');
@@ -38,4 +38,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/article/{article}/edit', ['as' => 'article.edit', 'uses' => 'ArticlesController@edit']);
     Route::patch('/article/{article}',  'ArticlesController@update');
     Route::get('/memberList', 'ListController@index');
+    Route::get('/memberList/{member}', 'ListController@status');
 });

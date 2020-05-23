@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Carbon\Carbon;
 
 class ListController extends Controller
 {
@@ -18,6 +19,25 @@ class ListController extends Controller
         $users = User::where('role','member')->get();
         $account = Auth::user();
         return view('admin.memberList',compact('users','account'));
+    }
+
+    public function status($id)
+    {
+        $member = User::find($id);
+        if($member->blocked_at == null)
+        {
+            $member->blocked_at = now();
+            $member->save();
+            return redirect('/memberList');
+        }
+        else 
+        {
+            $member = User::find($id);
+            $member->blocked_at = null;
+            $member->save();
+            return redirect('/memberList');
+        }
+        
     }
 
     /**
