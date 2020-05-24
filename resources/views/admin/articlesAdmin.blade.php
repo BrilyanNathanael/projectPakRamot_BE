@@ -70,6 +70,36 @@
                     <td>
                         <div class="list">
                             {{$article->created_at->format('D, d M Y')}}
+
+                            @if($article->username === "Nathan" || $article->username === "Andre")
+                                @if($article->username !== $data->username)
+                                <div class="list_action">
+                                    <form class="form" id="delete-form" action="{{ route('article.delete', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="delete" type="submit">
+                                            <img src="/image/delete.png" alt="" class="delete" onmouseover="hoverDelete(this)"
+                                                onmouseout="outHoverDelete(this)">
+                                        </button>
+                                    </form>
+                                </div>
+                                @else
+                                <div class="list_action">
+                                    <a href="{{ route('article.edit', $article->id)}}">
+                                        <img src="/image/edit.png" alt="" class="edit" onmouseover="hoverEdit(this)"
+                                            onmouseout="outHoverEdit(this)">
+                                    </a>
+                                    <form class="form" id="delete-form" action="{{ route('article.delete', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="delete" type="submit">
+                                            <img src="/image/delete.png" alt="" class="delete" onmouseover="hoverDelete(this)"
+                                                onmouseout="outHoverDelete(this)">
+                                        </button>
+                                    </form>
+                                </div>
+                                @endif
+                            @else
                             <div class="list_action">
                                 <a href="{{ route('article.edit', $article->id)}}">
                                     <img src="/image/edit.png" alt="" class="edit" onmouseover="hoverEdit(this)"
@@ -84,6 +114,7 @@
                                     </button>
                                 </form>
                             </div>
+                            @endif
                         </div>
                     </td>
                 </tr>

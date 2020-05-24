@@ -26,12 +26,12 @@
             </div>
             <div class="dropdown">
                 <div class="drop" onclick="clickDropDown(this)">
-                    <a id="user">Welcome, <span class="user">Member!</span></a>
+                    <a id="user">Welcome, <span class="user">{{$data->username}}</span></a>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="profile" id="profile">
-                    <a href="/Member/editProfile.html">Edit Profile</a>
-                    <a href="/blogPage.html">Logout</a>
+                    <a href="/profile">Edit Profile</a>
+                    <a href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
         </div>
