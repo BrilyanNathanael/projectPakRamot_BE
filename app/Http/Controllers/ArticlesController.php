@@ -22,16 +22,15 @@ class ArticlesController extends Controller
         {
             $user = Auth::user();
             $data = User::find($user->id);
-            $articles = Article::where('username', $user->username)->get();
+            $articles = Article::where('username', $user->username)->orderBy('created_at','desc')->get();
             return view('member.myArticle', ['articles' => $articles , 'data' => $data]);    
         }
         else if(Auth::user()->role === "admin")
         {
             $user = Auth::user();
             $data = User::find($user->id);
-            $role = User::all();
-            $articles = Article::all();
-            return view('admin.articlesAdmin', ['articles' => $articles, 'role' => $role, 'data' => $data]);    
+            $articles = Article::orderBy('created_at','desc')->get();
+            return view('admin.articlesAdmin', ['articles' => $articles, 'data' => $data]);    
         
         }
     

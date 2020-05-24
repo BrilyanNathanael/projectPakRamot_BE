@@ -48,7 +48,7 @@
                 {{$artics->content}}
             </p>
             <br>
-                Proin enim eros, consequat vel sapien id, mollis consequat elit. Pellentesque ligula purus, aliquam non fringilla sit amet, placerat a justo. Nullam pharetra eros non ultrices hendrerit. Maecenas diam nisi, pretium a magna quis, tincidunt suscipit ipsum. Vestibulum neque turpis, placerat quis porttitor in, lobortis in dolor. Aliquam mi massa, bibendum in condimentum et, feugiat a nisl. Integer nec ornare lorem. Sed non libero ipsum. Aenean id condimentum urna. Morbi faucibus ipsum non posuere vehicula. Duis aliquam tortor at nulla malesuada mollis. Sed vestibulum blandit diam a sagittis. Suspendisse sit amet consectetur risus, et lacinia sem. Proin at est eget sapien facilisis tempor et ut lorem.
+                
             </div>
         </div>
     </div>

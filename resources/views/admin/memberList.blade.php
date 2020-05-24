@@ -59,7 +59,7 @@
                             <div class="list_action">
                                 <a href="/memberList/{{$user->id}}">
                                     <img src="/image/padlock-unban.png" alt="" class="edit" onmouseover="hoverBan(this)"
-                                        onmouseout="outHoverUnban(this)">
+                                        onmouseout="outHoverBan(this)">
                                 </a>
                             </div>
                         </div>

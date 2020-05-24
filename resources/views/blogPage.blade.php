@@ -53,9 +53,10 @@
                                         <?php $content = substr($arts->content,0,60); ?>
                                         <p>{{$content}} ...</p>
                                         <h3 class="creator">{{$arts->username}}</h3>
-                                        <h3 class="time">28 Jan 2020</h3>
+                                        <h3 class="time">{{$arts->created_at->format('d M Y')}}</h3>
                                     </div>
-                                    <img src="{{ url('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
+                                    
+                                    <img src="{{ asset('/data_file/' . $arts->picture) }}" alt="" width="80px" height="80px">
                                 </div>
                             </a>
                             <div class="line"></div>
