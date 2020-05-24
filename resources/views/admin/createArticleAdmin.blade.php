@@ -31,8 +31,8 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="profile" id="profile">
-                    <a href="/Member/editProfile.html">Edit Profile</a>
-                    <a href="/blogPage.html">Logout</a>
+                    <a href="/profile">Edit Profile</a>
+                    <a href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
         </div>

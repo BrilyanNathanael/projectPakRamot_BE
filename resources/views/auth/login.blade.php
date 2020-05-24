@@ -24,14 +24,19 @@
             <div class="login-list">
 
                 @if (session('error'))
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger" style="width: 22em;">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         {{session('error')}}
                     </div>
-                    <!-- <div class="alert alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">×</button> 
-                        <strong>Incorrect username or password</strong>
-                    </div> -->
                 @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        Username or Password do not match
+                    </div>
+                @endif
+                
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
