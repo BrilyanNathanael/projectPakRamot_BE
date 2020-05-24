@@ -229,7 +229,7 @@ select {
     padding-top: 7rem;
 }
 
-.publish>a {
+.publish {
     display: flex;
     align-items: center;
     float: right;
@@ -240,6 +240,7 @@ select {
     margin-top: -2em;
     margin-right: 2em;
     border-radius: 2em;
+    border: 0;
 }
 
 .footerPage {
